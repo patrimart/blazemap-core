@@ -56,7 +56,10 @@ export const blazemap = (options: Readonly<Partial<BlazemapOptions>> = {}) => {
       for (let i = 0; i < points.length; i++) {
         const point = points[i];
         const d = distance(point, [x, y, 1]);
-        weight += point[2];
+        let w = 0;
+        if (d < radius) w = 1;
+        if (d < radius + blur * 0.5) w = 0.25;
+        weight += point[2] * w;
       }
 
       const color = colorScale[clamp(0, 255)(weight)];
