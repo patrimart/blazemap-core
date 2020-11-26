@@ -17,26 +17,18 @@ export const normalize = (min: number, max: number) => (value: number) =>
   (value - min) / (max - min);
 
 export const toRgba = (hex: number): RGBa => {
-  const hexStr = hex.toString(16);
+  if (hex < 0 || hex > 0xffffffff) throw new Error(`Invalid hex value: ${hex}`);
   const rgba: RGBa = [
-    Number(`0x${hexStr.slice(0, 2)}`),
-    Number(`0x${hexStr.slice(2, 4)}`),
-    Number(`0x${hexStr.slice(4, 6)}`),
-    Number(`0x${hexStr.slice(6)}`),
+    (hex & 0xff000000) >> 24,
+    (hex & 0x00ff0000) >> 16,
+    (hex & 0x0000ff00) >> 8,
+    hex & 0x000000ff,
   ];
-  if (rgba.some((v) => Number.isNaN(v) || v < 0 || v > 255))
-    throw new Error(
-      `The color was not a valid hex with alpha value (0xrrggbbaa): ${hex.toString(
-        16
-      )}`
-    );
   return rgba;
 };
 
 export const toHex = ([r, g, b, a]: RGBa): number =>
-  Number(
-    `0x${r.toString(16)}${g.toString(16)}${b.toString(16)}${a.toString(16)}`
-  );
+  ((r | 0) << 24) + ((g | 0) << 16) + ((b | 0) << 8) + (a | 0);
 
 export const tweenRgbas = (
   from: RGBa,
@@ -58,9 +50,7 @@ export const tweenRgbas = (
   return tweens;
 };
 
-export const genColorScale = (
-  gradient: ColorGradient
-): number[] => {
+export const genColorScale = (gradient: ColorGradient): number[] => {
   const [min, max] = Object.keys(gradient)
     .map((k) => {
       const kn = Number(k);
@@ -84,6 +74,7 @@ export const genColorScale = (
     .reverse();
 
   const scale: number[] = new Array(256).fill(0);
+
   for (let i = 0; i < ranges.length; i++) {
     const [[mn, f], [mx, t]] = ranges[i];
     const index = Math.floor(256 / mn);

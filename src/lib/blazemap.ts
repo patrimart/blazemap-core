@@ -24,14 +24,13 @@ const validateOptions = (options: Readonly<Partial<BlazemapOptions>> = {}) => ({
   },
 });
 
-export const blazemap = (options: Readonly<Partial<BlazemapOptions>> = {}) => {
+export const blazemap = (canvas: HTMLCanvasElement, options: Readonly<Partial<BlazemapOptions>> = {}) => {
   const opts: BlazemapOptions = validateOptions(options);
 
   let colorScale = genColorScale(opts.colors);
 
   const pts: Point[] = [];
 
-  const canvas = document.createElement('canvas');
   const context = canvas.getContext('2d', { alpha: true });
   if (context === null) throw new Error('Canvas context returned null.');
   // context.globalAlpha = 0.5;

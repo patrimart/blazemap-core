@@ -4,4 +4,4 @@ export type Points = ReadonlyArray<Point>;
 
 export type ColorGradient = Readonly<Record<number, number>>;
 
-export type RGBa = [r: number, g: number, b: number, a: number];
+export type RGBa = readonly [r: number, g: number, b: number, a: number];
