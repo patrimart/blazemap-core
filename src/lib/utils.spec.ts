@@ -1,7 +1,7 @@
 import test from 'ava';
 
-import { clamp } from './utils';
+import { normalize } from './utils';
 
-test('clamp', (t) => {
-  t.is(clamp(-10, 10)(0), 0.5);
+test('normalize', (t) => {
+  t.is(normalize(-10, 10)(0), 0.5);
 });
