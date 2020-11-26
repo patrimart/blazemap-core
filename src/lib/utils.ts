@@ -1,4 +1,4 @@
-import { ColorGradient, HexU32, Point, Points, RGBa } from './types';
+import { ColorGradient, HexU32, Point, RGBa } from './types';
 
 export const clamp = (min: number, max: number) => (value: number) =>
   Math.max(Math.min(value, max), min);
@@ -25,7 +25,7 @@ export const normalize = (min: number, max: number) => (value: number) =>
 export const toRgba = (hex: HexU32): RGBa => {
   if (hex < 0 || hex > 0xffffffff) throw new Error(`Invalid hex value: ${hex}`);
   return [
-    (hex & 0xff000000) >> 24,
+    (hex * 2 ** -24) | 0,
     (hex & 0x00ff0000) >> 16,
     (hex & 0x0000ff00) >> 8,
     hex & 0x000000ff,
@@ -33,7 +33,7 @@ export const toRgba = (hex: HexU32): RGBa => {
 };
 
 export const toHex = ([r, g, b, a]: RGBa): HexU32 =>
-  ((r | 0) << 24) + ((g | 0) << 16) + ((b | 0) << 8) + (a | 0);
+  (r | 0) * 2 ** 24 + ((g | 0) << 16) + ((b | 0) << 8) + (a | 0);
 
 export const tweenRgbas = (
   from: RGBa,
@@ -43,8 +43,9 @@ export const tweenRgbas = (
   if (steps < 1)
     throw new Error('tweenRgbas param steps must be greater than 0.');
   const tweens = new Array(steps).fill(from);
+  // tweens[steps - 1] = to;
   for (let i = 0; i < steps; i++) {
-    const delta = normalize(0, steps)(i);
+    const delta = normalize(0, steps - 1)(i);
     tweens[i] = [
       Math.round(from[0] + (to[0] - from[0]) * delta),
       Math.round(from[1] + (to[1] - from[1]) * delta),
@@ -72,15 +73,16 @@ export const genColorScale = (gradient: ColorGradient): HexU32[] => {
   const ranges: ReadonlyArray<
     readonly [from: readonly [number, RGBa], to: readonly [number, RGBa]]
   > = tail
-    .reduce(([h, ...t], g) => [[h[1], g] as const, ...t], [[from, to] as const])
+    .reduce(([[f, t], ...tl], g) => [[t, g] as const, [f, t] as const, ...tl], [
+      [from, to] as const,
+    ])
     .reverse();
 
   const scale: number[] = new Array(256).fill(0);
-
   for (let i = 0; i < ranges.length; i++) {
     const [[mn, f], [mx, t]] = ranges[i];
-    const index = Math.floor(256 / mn);
-    const steps = Math.ceil(256 / mx) - index;
+    const index = Math.floor(256 * mn);
+    const steps = Math.ceil(256 * mx - index);
     tweenRgbas(f, t, steps)
       .map(toHex)
       .forEach((r, i) => (scale[i + index] = r));
@@ -88,6 +90,3 @@ export const genColorScale = (gradient: ColorGradient): HexU32[] => {
 
   return scale;
 };
-
-export const flattenPoints = (points: Points) =>
-  points.reduce<ReadonlyArray<number>>((ps, [x, y, k]) => [...ps, x, y, k], []);
