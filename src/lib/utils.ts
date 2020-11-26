@@ -43,7 +43,6 @@ export const tweenRgbas = (
   if (steps < 1)
     throw new Error('tweenRgbas param steps must be greater than 0.');
   const tweens = new Array(steps).fill(from);
-  // tweens[steps - 1] = to;
   for (let i = 0; i < steps; i++) {
     const delta = normalize(0, steps - 1)(i);
     tweens[i] = [
