@@ -1,11 +1,17 @@
-import { ColorGradient, Point, Points, RGBa } from './types';
+import { ColorGradient, HexU32, Point, Points, RGBa } from './types';
 
 export const clamp = (min: number, max: number) => (value: number) =>
   Math.max(Math.min(value, max), min);
 
-export const clampU = clamp(0, Number.MAX_SAFE_INTEGER);
+export const clampU8 = clamp(0, 0xff);
 
-export const clampI = clamp(0, 1);
+export const clampU16 = clamp(0, 0xffff);
+
+export const clampU24 = clamp(0, 0xffffff);
+
+export const clampU32 = clamp(0, 0xffffffff);
+
+export const clampProportion = clamp(0, 1);
 
 export const pointEq = (a: Point, b: Point): boolean =>
   a === b || a.every((n, i) => n === b[i]);
@@ -16,18 +22,17 @@ export const distance = ([x1, y1]: Point, [x2, y2]: Point) =>
 export const normalize = (min: number, max: number) => (value: number) =>
   (value - min) / (max - min);
 
-export const toRgba = (hex: number): RGBa => {
+export const toRgba = (hex: HexU32): RGBa => {
   if (hex < 0 || hex > 0xffffffff) throw new Error(`Invalid hex value: ${hex}`);
-  const rgba: RGBa = [
+  return [
     (hex & 0xff000000) >> 24,
     (hex & 0x00ff0000) >> 16,
     (hex & 0x0000ff00) >> 8,
     hex & 0x000000ff,
   ];
-  return rgba;
 };
 
-export const toHex = ([r, g, b, a]: RGBa): number =>
+export const toHex = ([r, g, b, a]: RGBa): HexU32 =>
   ((r | 0) << 24) + ((g | 0) << 16) + ((b | 0) << 8) + (a | 0);
 
 export const tweenRgbas = (
@@ -50,7 +55,7 @@ export const tweenRgbas = (
   return tweens;
 };
 
-export const genColorScale = (gradient: ColorGradient): number[] => {
+export const genColorScale = (gradient: ColorGradient): HexU32[] => {
   const [min, max] = Object.keys(gradient)
     .map((k) => {
       const kn = Number(k);
@@ -58,10 +63,7 @@ export const genColorScale = (gradient: ColorGradient): number[] => {
         throw new Error(`ColorGradient keys must be a number: ${gradient}`);
       return kn;
     })
-    .reduce(([m, M], v) => [Math.min(m, v), Math.max(M, v)], [
-      Number.MAX_SAFE_INTEGER,
-      Number.MIN_SAFE_INTEGER,
-    ]);
+    .reduce(([m, M], v) => [Math.min(m, v), Math.max(M, v)], [0xffffffff, 0]);
 
   const [from, to, ...tail] = Object.entries(gradient)
     .map(([k, v]) => [normalize(min, max)(Number(k)), toRgba(v)] as const)
