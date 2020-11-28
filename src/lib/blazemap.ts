@@ -1,7 +1,8 @@
 import { GPU } from 'gpu.js';
 
-import { ColorGradient, HexU8, Point, Points, Proportion } from './types';
-import { clamp, distance, genColorScale, toRgba } from './utils';
+import { kernel } from './kernel';
+import { ColorGradient, Point, Points } from './types';
+import { genColorScale, toRgba } from './utils';
 
 export interface BlazemapOptions {
   readonly width: number;
@@ -34,53 +35,18 @@ export const blazemap = (
 
   const context = canvas.getContext('webgl2', { premultipliedAlpha: false });
   if (context === null) throw new Error('Canvas context returned null.');
-  // context.globalAlpha = 0.5;
 
-  const gpu = new GPU({
-    canvas,
-    context,
-    mode: 'gpu',
+  const gpu = new GPU({ canvas, context });
+
+  const krender = gpu.createKernel(kernel, {
+    argumentTypes: {
+      a: 'Array',
+      b: 'Integer',
+      c: 'Integer',
+      d: 'Array',
+    },
+    graphical: true,
   });
-
-  gpu.addFunction(distance as never, {
-    argumentTypes: { a: 'Array(2)', b: 'Array(2)' },
-    returnType: 'Number',
-  });
-
-  const clampIndex = clamp(0, 256);
-  gpu.addFunction(clampIndex as never, {
-    argumentTypes: { a: 'Number' },
-    returnType: 'Number',
-  });
-
-  const krender = gpu
-    .createKernel(function (
-      points: [x: number, y: number, p: Proportion][],
-      radius: number,
-      blur: number,
-      colorScale: [r: HexU8, g: HexU8, b: HexU8, a: HexU8][]
-    ) {
-      const x = this.thread.x;
-      const y = this.thread.y;
-
-      let weight = 0;
-
-      for (let i = 0; i < this.constants.pointCount; i++) {
-        const point = points[i];
-        const d = distance(point, [x, y, 1]);
-        let w = 0;
-        if (d < radius) w = 1;
-        if (d < radius + blur * 0.5) w = 0.25;
-        weight += point[2] * w;
-      }
-
-      const c = colorScale[clampIndex(weight)];
-
-      this.color(c[0], c[1], c[2], c[3]);
-    })
-    .setDebug(true)
-    .setGraphical(true)
-    .setCanvas(canvas);
 
   const setOptions = (options: Readonly<Partial<BlazemapOptions>>) => {
     Object.assign(validateOptions, options);
@@ -110,9 +76,9 @@ export const blazemap = (
   };
 
   const render = () => {
-    krender
-      .setConstants({ pointCount: pts.length })
-      .setOutput([opts.width, opts.height])(
+    krender.setConstants({ pointCount: pts.length });
+    krender.setOutput([opts.width, opts.height]);
+    krender(
       (pts as unknown) as number[][],
       opts.radius,
       opts.blur,

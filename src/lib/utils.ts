@@ -17,7 +17,7 @@ export const pointEq = (a: Point, b: Point): boolean =>
   a === b || a.every((n, i) => n === b[i]);
 
 export const distance = ([x1, y1]: Point, [x2, y2]: Point) =>
-  Math.hypot(x2 - x1, y2 - y1);
+  Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 
 export const normalize = (min: number, max: number) => (value: number) =>
   (value - min) / (max - min);
