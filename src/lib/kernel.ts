@@ -21,17 +21,16 @@ export function kernel(
     );
     // console.log('d', d);
     let w = 0;
-    if (d < radius) w += 200;
-    else if (d < radius + blur * 0.5) w += 100;
+    if (d < radius + blur * 0.5) w += (1 - d / (radius + blur * 0.5)) * 255;
     weight += points[i][2] * w;
   }
 
-  const wc = Math.round(Math.max(Math.min(weight, 256), 0));
+  const wc = Math.round(Math.max(Math.min(weight, 255), 0));
   // console.log('wc', wc, weight);
   this.color(
-    colorScale[wc][0],
-    colorScale[wc][1],
-    colorScale[wc][2],
+    (colorScale[wc][0] - 0) / (255 - 0),
+    (colorScale[wc][1] - 0) / (255 - 0),
+    (colorScale[wc][2] - 0) / (255 - 0),
     (colorScale[wc][3] - 0) / (255 - 0)
   );
 }

@@ -2,7 +2,7 @@ import { GPU } from 'gpu.js';
 
 import { kernel } from './kernel';
 import { ColorGradient, Point, Points } from './types';
-import { genColorScale, toRgba } from './utils';
+import { genColorScale } from './utils';
 
 export interface BlazemapOptions {
   readonly width: number;
@@ -18,10 +18,10 @@ const validateOptions = (options: Readonly<Partial<BlazemapOptions>> = {}) => ({
   radius: options.radius ?? 25,
   blur: options.blur ?? 15,
   colors: options.colors ?? {
-    0: 0x0000ff00,
-    0.2: 0x0000ff22,
-    0.65: 0x00ff0066,
-    1: 0xff0000ee,
+    0: 0x0000cc00,
+    0.2: 0x0000cc22,
+    0.65: 0x88880066,
+    1: 0xee0000dd,
   },
 });
 
@@ -82,7 +82,7 @@ export const blazemap = (
       (pts as unknown) as number[][],
       opts.radius,
       opts.blur,
-      (colorScale.map(toRgba) as unknown) as number[][]
+      (colorScale as unknown) as number[][]
     );
   };
 

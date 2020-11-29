@@ -2,7 +2,7 @@ import test from 'ava';
 
 import { kernel } from './kernel';
 import { HexU8, Proportion } from './types';
-import { genColorScale, toRgba } from './utils';
+import { genColorScale } from './utils';
 
 test('kernel', (t) => {
   const run = () => {
@@ -44,12 +44,7 @@ test('kernel', (t) => {
             0.2: 0x0000ff22,
             0.65: 0x00ff0066,
             1: 0xff0000ee,
-          }).map(toRgba) as unknown) as [
-            r: HexU8,
-            g: HexU8,
-            b: HexU8,
-            a: HexU8
-          ][]
+          }) as unknown) as [r: HexU8, g: HexU8, b: HexU8, a: HexU8][]
         );
       }
     }

@@ -55,7 +55,7 @@ export const tweenRgbas = (
   return tweens;
 };
 
-export const genColorScale = (gradient: ColorGradient): HexU32[] => {
+export const genColorScale = (gradient: ColorGradient): RGBa[] => {
   const [min, max] = Object.keys(gradient)
     .map((k) => {
       const kn = Number(k);
@@ -77,14 +77,12 @@ export const genColorScale = (gradient: ColorGradient): HexU32[] => {
     ])
     .reverse();
 
-  const scale: number[] = new Array(256).fill(0);
+  const scale: RGBa[] = new Array(256).fill(0);
   for (let i = 0; i < ranges.length; i++) {
     const [[mn, f], [mx, t]] = ranges[i];
-    const index = Math.floor(256 * mn);
-    const steps = Math.ceil(256 * mx - index);
-    tweenRgbas(f, t, steps)
-      .map(toHex)
-      .forEach((r, i) => (scale[i + index] = r));
+    const index = Math.round(256 * mn);
+    const steps = Math.round(256 * mx - index);
+    tweenRgbas(f, t, steps).forEach((r, i) => (scale[i + index] = r));
   }
 
   return scale;
