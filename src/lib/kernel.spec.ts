@@ -1,12 +1,17 @@
 import test from 'ava';
 
-import { kernel } from './kernel';
+import { kernelInit } from './kernel';
 import { HexU8, Proportion } from './types';
 import { genColorScale } from './utils';
 
 test('kernel', (t) => {
   const run = () => {
-    const points: [x: number, y: number, p: Proportion][] = [[5, 5, 1]];
+    const points: [x: number, y: number, p: Proportion][] = [
+      [100, 100, 1],
+      [145, 130, 1],
+      [145, 130, 1],
+      [110, 150, 1],
+    ];
     const result: number[] = [];
 
     function color(r: number): void;
@@ -17,13 +22,13 @@ test('kernel', (t) => {
       console.log(JSON.stringify(rgba));
     }
 
-    for (let x = 0; x < 10; x++) {
-      for (let y = 0; y < 10; y++) {
-        kernel.call(
+    for (let x = 0; x < 200; x++) {
+      for (let y = 0; y < 200; y++) {
+        kernelInit.call(
           {
             output: {
-              x: 10,
-              y: 10,
+              x: 200,
+              y: 200,
               z: 0,
             },
             thread: {
@@ -37,14 +42,15 @@ test('kernel', (t) => {
             color,
           },
           points,
-          2,
-          1,
+          25,
+          15,
           (genColorScale({
             0: 0x0000ff00,
             0.2: 0x0000ff22,
             0.65: 0x00ff0066,
             1: 0xff0000ee,
-          }) as unknown) as [r: HexU8, g: HexU8, b: HexU8, a: HexU8][]
+          }) as unknown) as [r: HexU8, g: HexU8, b: HexU8, a: HexU8][],
+          2
         );
       }
     }

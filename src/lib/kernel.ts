@@ -2,35 +2,45 @@ import { IKernelFunctionThis } from 'gpu.js';
 
 import { HexU8, Proportion } from './types';
 
-export function kernel(
+export function kernelInit(
   this: IKernelFunctionThis<{ pointCount: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
   blur: number,
-  colorScale: [r: HexU8, g: HexU8, b: HexU8, a: HexU8][]
+  colorScale: [r: HexU8, g: HexU8, b: HexU8, a: HexU8][],
+  maxWeight: number
 ) {
-  // console.log('colorScale', JSON.stringify(colorScale));
+  function clampit(v: number) {
+    return Math.round(Math.max(Math.min(v, 255), 0));
+  }
+  function distance(x1: number, y1: number, x2: number, y2: number) {
+    return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+  }
+  function norm(v: number): number {
+    return (v - 0) / (255 - 0);
+  }
+  function easeFade(d: number, r: number, b: number) {
+    if (d < b * 0.5) return 1;
+    return 1 - Math.min((d - b * 0.5) / r, 1);
+  }
+
   const x = this.thread.x;
   const y = this.thread.y;
 
   let weight = 0;
 
   for (let i = 0; i < this.constants.pointCount; i++) {
-    const d = Math.sqrt(
-      Math.pow(points[i][0] - x, 2) + Math.pow(points[i][1] - y, 2)
-    );
-    // console.log('d', d);
-    let w = 0;
-    if (d < radius + blur * 0.5) w += (1 - d / (radius + blur * 0.5)) * 255;
+    const d = distance(points[i][0], points[i][1], x, y);
+    const w = easeFade(d, radius, blur);
     weight += points[i][2] * w;
   }
 
-  const wc = Math.round(Math.max(Math.min(weight, 255), 0));
-  // console.log('wc', wc, weight);
+  const wc = clampit((weight / maxWeight) * 255);
+
   this.color(
-    (colorScale[wc][0] - 0) / (255 - 0),
-    (colorScale[wc][1] - 0) / (255 - 0),
-    (colorScale[wc][2] - 0) / (255 - 0),
-    (colorScale[wc][3] - 0) / (255 - 0)
+    norm(colorScale[wc][0]),
+    norm(colorScale[wc][1]),
+    norm(colorScale[wc][2]),
+    norm(colorScale[wc][3])
   );
 }
