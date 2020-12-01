@@ -64,7 +64,6 @@ export const blazemap = (
       const index = Math.round((x / diam) * (y / diam));
       grid[index] = (grid[index] ?? 0) + p;
     }
-    console.log({ grid });
     maxWeight = grid.reduce((max, v) => Math.max(max, v));
   };
 
@@ -95,7 +94,6 @@ export const blazemap = (
   const clearPoints = () => setPoints([]);
 
   const render = () => {
-    console.log(maxWeight);
     krender.setConstants({ pointCount: pts.length });
     krender.setOutput([opts.width, opts.height]);
     krender(
