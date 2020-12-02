@@ -1,5 +1,6 @@
 import { GPU } from 'gpu.js';
 
+import { colorsWarm } from './colors';
 import { kernelInit } from './kernel';
 import { ColorGradient, Point, Points } from './types';
 import { genColorScale } from './utils';
@@ -15,14 +16,9 @@ export interface BlazemapOptions {
 const validateOptions = (options: Readonly<Partial<BlazemapOptions>> = {}) => ({
   width: options.width ?? 480,
   height: options.height ?? 260,
-  radius: options.radius ?? 25,
-  blur: options.blur ?? 15,
-  colors: options.colors ?? {
-    0: 0x0000cc00,
-    0.2: 0x0000cc22,
-    0.65: 0x88880066,
-    1: 0xee0000dd,
-  },
+  radius: options.radius ?? 20,
+  blur: options.blur ?? 16,
+  colors: options.colors ?? colorsWarm,
 });
 
 export const blazemap = (

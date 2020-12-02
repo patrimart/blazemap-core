@@ -2,7 +2,16 @@ import { IKernelFunctionThis } from 'gpu.js';
 
 import { HexU8, Proportion } from './types';
 
-export function kernelInit(
+export type KernelInit = (
+  this: IKernelFunctionThis<{ pointCount: number }>,
+  points: [x: number, y: number, p: Proportion][],
+  radius: number,
+  blur: number,
+  colorScale: [r: HexU8, g: HexU8, b: HexU8, a: HexU8][],
+  maxWeight: number
+) => void;
+
+export function kernel(
   this: IKernelFunctionThis<{ pointCount: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
@@ -52,3 +61,40 @@ export function kernelInit(
     norm(colorScale[wc][3])
   );
 }
+
+export const kernelInit = (new Function(
+  'points',
+  'radius',
+  'blur',
+  'colorScale',
+  'maxWeight',
+  `{
+    function clampit(v) {
+        return Math.round(Math.max(Math.min(v, 255), 0));
+    }
+    function distance(x1, y1, x2, y2) {
+        return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+    function norm(v) {
+        return (v - 0) / (255 - 0);
+    }
+    function easeFade(d, r, b) {
+        if (d < r - b * 0.5)
+            return 1;
+        return (1 -
+            Math.min(1, (((r + b * 0.5) / (r + b * 0.5 - (r - b * 0.5))) *
+                (d - (r - b * 0.5))) /
+                (r + b * 0.5)));
+    }
+    var x = this.thread.x;
+    var y = this.thread.y;
+    var weight = 0;
+    for (var i = 0; i < this.constants.pointCount; i++) {
+        var d = distance(points[i][0], points[i][1], x, y);
+        var w = easeFade(d, radius, blur);
+        weight += points[i][2] * w;
+    }
+    var wc = clampit((weight / maxWeight) * 255);
+    this.color(norm(colorScale[wc][0]), norm(colorScale[wc][1]), norm(colorScale[wc][2]), norm(colorScale[wc][3]));
+  }`
+) as unknown) as KernelInit;
