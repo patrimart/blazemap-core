@@ -20,8 +20,16 @@ export function kernelInit(
     return (v - 0) / (255 - 0);
   }
   function easeFade(d: number, r: number, b: number) {
-    if (d < b * 0.5) return 1;
-    return 1 - Math.min((d - b * 0.5) / r, 1);
+    if (d < r - b * 0.5) return 1;
+    return (
+      1 -
+      Math.min(
+        1,
+        (((r + b * 0.5) / (r + b * 0.5 - (r - b * 0.5))) *
+          (d - (r - b * 0.5))) /
+          (r + b * 0.5)
+      )
+    );
   }
 
   const x = this.thread.x;
