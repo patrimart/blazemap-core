@@ -2,10 +2,16 @@ import { GPU, IKernelRunShortcut } from 'gpu.js';
 
 import { kernelInit } from './kernel';
 import { BlazemapOptions, ColorGradient, Point, Points } from './types';
-import { DEFAULT_OPTIONS, EOP, genColorScale, validateOptions } from './utils';
+import {
+  assertValidNumber,
+  DEFAULT_OPTIONS,
+  EOP,
+  genColorScale,
+  validateOptions,
+} from './utils';
 
 /**
- * Initiate the Blazemap.
+ * Initialize the Blazemap.
  * @param canvas
  * @param options
  * @param maxPoints
@@ -17,6 +23,7 @@ export const blazemap = (
   > = {},
   maxPoints = 1000
 ) => {
+  assertValidNumber(maxPoints, 1, 100_000);
   let opts = validateOptions(DEFAULT_OPTIONS(canvas), options);
   let colorScale = genColorScale(opts.colors);
   let pts: Point[] = [];
@@ -76,7 +83,16 @@ export const blazemap = (
     findMaxCluster();
   };
 
-  const resize = (width: number, height: number) => {
+  const resize = () => {
+    opts = validateOptions(opts, {
+      width: canvas.width,
+      height: canvas.height,
+    });
+    findMaxCluster();
+    createKernel();
+  };
+
+  const resizeTo = (width: number, height: number) => {
     opts = validateOptions(opts, { width, height });
     canvas.width = opts.width;
     canvas.height = opts.height;
@@ -115,6 +131,7 @@ export const blazemap = (
   return {
     render,
     resize,
+    resizeTo,
     setHeatmap,
     setPoints,
     addPoint,

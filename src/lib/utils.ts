@@ -101,7 +101,7 @@ export const DEFAULT_OPTIONS = (
   colors: colorsWarm,
 });
 
-function assertValidNumber(
+export function assertValidNumber(
   v: unknown,
   min = 1,
   max = 10_000
