@@ -37,7 +37,7 @@ test('kernel', (t) => {
               z: 0,
             },
             constants: {
-              pointCount: points.length,
+              maxPoints: 1000,
             },
             color,
           },

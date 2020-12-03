@@ -3,7 +3,7 @@ import { IKernelFunctionThis } from 'gpu.js';
 import { HexU8, Proportion } from './types';
 
 export type KernelInit = (
-  this: IKernelFunctionThis<{ pointCount: number }>,
+  this: IKernelFunctionThis<{ maxPoints: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
   blur: number,
@@ -11,8 +11,8 @@ export type KernelInit = (
   maxWeight: number
 ) => void;
 
-export function kernel(
-  this: IKernelFunctionThis<{ pointCount: number }>,
+export function kernelInit(
+  this: IKernelFunctionThis<{ maxPoints: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
   blur: number,
@@ -46,7 +46,8 @@ export function kernel(
 
   let weight = 0;
 
-  for (let i = 0; i < this.constants.pointCount; i++) {
+  for (let i = 0; i < this.constants.maxPoints; i++) {
+    if (points[i][2] == 10_000) break;
     const d = distance(points[i][0], points[i][1], x, y);
     const w = easeFade(d, radius, blur);
     weight += points[i][2] * w;
@@ -62,7 +63,7 @@ export function kernel(
   );
 }
 
-export const kernelInit = (new Function(
+export const kernel = (new Function(
   'points',
   'radius',
   'blur',

@@ -15,3 +15,11 @@ export type Points = ReadonlyArray<Point>;
 export type ColorGradient = Readonly<Record<Proportion, HexU32>>;
 
 export type RGBa = readonly [r: HexU8, g: HexU8, b: HexU8, a: HexU8];
+
+export interface BlazemapOptions {
+  readonly width: number;
+  readonly height: number;
+  readonly radius: number;
+  readonly blur: number;
+  readonly colors: ColorGradient;
+}

@@ -1,53 +1,56 @@
-import { GPU } from 'gpu.js';
+import { GPU, IKernelRunShortcut } from 'gpu.js';
 
-import { colorsWarm } from './colors';
 import { kernelInit } from './kernel';
-import { ColorGradient, Point, Points } from './types';
-import { genColorScale } from './utils';
+import { BlazemapOptions, ColorGradient, Point, Points } from './types';
+import { DEFAULT_OPTIONS, EOP, genColorScale, validateOptions } from './utils';
 
-export interface BlazemapOptions {
-  readonly width: number;
-  readonly height: number;
-  readonly radius: number;
-  readonly blur: number;
-  readonly colors: ColorGradient;
-}
-
-const validateOptions = (options: Readonly<Partial<BlazemapOptions>> = {}) => ({
-  width: options.width ?? 480,
-  height: options.height ?? 260,
-  radius: options.radius ?? 20,
-  blur: options.blur ?? 16,
-  colors: options.colors ?? colorsWarm,
-});
-
+/**
+ * Initiate the Blazemap.
+ * @param canvas
+ * @param options
+ * @param maxPoints
+ */
 export const blazemap = (
   canvas: HTMLCanvasElement,
-  options: Readonly<Partial<BlazemapOptions>> = {}
+  options: Readonly<
+    Partial<Pick<BlazemapOptions, 'radius' | 'blur' | 'colors'>>
+  > = {},
+  maxPoints = 1000
 ) => {
-  const opts: BlazemapOptions = validateOptions(options);
+  let opts = validateOptions(DEFAULT_OPTIONS(canvas), options);
   let colorScale = genColorScale(opts.colors);
   let pts: Point[] = [];
   let maxWeight = 0;
+  let currentKernel: IKernelRunShortcut | undefined;
 
   const context = canvas.getContext('webgl2', { premultipliedAlpha: false });
   if (context === null) throw new Error('Canvas context returned null.');
 
   const gpu = new GPU({ canvas, context });
 
-  const krender = gpu.createKernel(kernelInit, {
-    argumentTypes: {
-      a: 'Array',
-      b: 'Integer',
-      c: 'Integer',
-      d: 'Array',
-      e: 'Integer',
-    },
-    graphical: true,
-    immutable: true,
-    dynamicArguments: true,
-    dynamicOutput: true,
-  });
+  const createKernel = () => {
+    currentKernel?.destroy();
+    const k = gpu.createKernel(kernelInit, {
+      argumentTypes: {
+        a: 'Array',
+        b: 'Integer',
+        c: 'Integer',
+        d: 'Array',
+        e: 'Integer',
+      },
+      graphical: true,
+      immutable: true,
+      dynamicArguments: true,
+      dynamicOutput: true,
+      constants: { maxPoints },
+      output: [opts.width, opts.height],
+    });
+    k.setLoopMaxIterations(maxPoints);
+
+    currentKernel = k;
+  };
+
+  createKernel();
 
   const findMaxCluster = () => {
     const diam = opts.radius * 2;
@@ -63,16 +66,22 @@ export const blazemap = (
     maxWeight = grid.reduce((max, v) => Math.max(max, v));
   };
 
-  const setOptions = (options: Readonly<Partial<BlazemapOptions>>) => {
-    Object.assign(opts, validateOptions({ ...opts, ...options }));
-    if (options.colors) {
-      colorScale = genColorScale(options.colors);
-    }
-    if (options.width || options.height) {
-      canvas.width = options.width ?? opts.width;
-      canvas.height = options.height ?? opts.height;
-      findMaxCluster();
-    }
+  /****************************************************************************
+   * PUBLIC FUNCTIONS
+   */
+
+  const setHeatmap = (radius: number, blur: number, colors: ColorGradient) => {
+    opts = validateOptions(opts, { radius, blur, colors });
+    colorScale = genColorScale(opts.colors);
+    findMaxCluster();
+  };
+
+  const resize = (width: number, height: number) => {
+    opts = validateOptions(opts, { width, height });
+    canvas.width = opts.width;
+    canvas.height = opts.height;
+    findMaxCluster();
+    createKernel();
   };
 
   const setPoints = (points: Points) => {
@@ -81,7 +90,7 @@ export const blazemap = (
   };
 
   const addPoint = (...point: Points) => {
-    setPoints(pts.concat(point));
+    setPoints(point.concat(pts));
   };
 
   const modifyPoints = (fn: (ps: Points) => Points) =>
@@ -90,25 +99,23 @@ export const blazemap = (
   const clearPoints = () => setPoints([]);
 
   const render = () => {
-    krender.setConstants({ pointCount: pts.length });
-    krender.setOutput([opts.width, opts.height]);
-    krender(
-      (pts as unknown) as number[][],
+    console.time();
+    currentKernel?.(
+      (pts.concat([EOP]) as unknown) as number[][],
       opts.radius,
       opts.blur,
       (colorScale as unknown) as number[][],
       maxWeight
     );
+    console.timeEnd();
   };
 
-  const destroy = () => {
-    krender.destroy();
-    gpu.destroy();
-  };
+  const destroy = () => gpu.destroy();
 
   return {
     render,
-    setOptions,
+    resize,
+    setHeatmap,
     setPoints,
     addPoint,
     modifyPoints,

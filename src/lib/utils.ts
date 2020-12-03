@@ -1,4 +1,5 @@
-import { ColorGradient, HexU32, Point, RGBa } from './types';
+import { colorsWarm } from './colors';
+import { BlazemapOptions, ColorGradient, HexU32, Point, RGBa } from './types';
 
 export const clamp = (min: number, max: number) => (value: number) =>
   Math.max(Math.min(value, max), min);
@@ -86,4 +87,63 @@ export const genColorScale = (gradient: ColorGradient): RGBa[] => {
   }
 
   return scale;
+};
+
+export const EOP: Point = [0, 0, 10_000];
+
+export const DEFAULT_OPTIONS = (
+  canvas: HTMLCanvasElement
+): BlazemapOptions => ({
+  width: canvas.getBoundingClientRect().width,
+  height: canvas.getBoundingClientRect().height,
+  radius: 20,
+  blur: 16,
+  colors: colorsWarm,
+});
+
+function assertValidNumber(
+  v: unknown,
+  min = 1,
+  max = 10_000
+): asserts v is number {
+  if (!(typeof v === 'number' && v >= min && v <= max)) {
+    throw new Error(`The value is not a number within ${min} and ${max}: ${v}`);
+  }
+}
+
+export const validateOptions = (
+  { width, height, radius, blur, colors }: BlazemapOptions,
+  options: Readonly<Partial<BlazemapOptions>> = {}
+): BlazemapOptions => {
+  const opts = { width, height, radius, blur, colors };
+
+  if (options.width) {
+    assertValidNumber(options.width);
+    opts.width = options.width;
+  }
+
+  if (options.height) {
+    assertValidNumber(options.height);
+    opts.height = options.height;
+  }
+
+  if (options.radius) {
+    assertValidNumber(options.radius, 1, 1000);
+    opts.radius = options.radius;
+  }
+
+  if (options.blur) {
+    assertValidNumber(options.blur, 0, 1000);
+    opts.blur = options.blur;
+  }
+
+  if (options.colors) {
+    Object.entries(options.colors).forEach((k, v) => {
+      assertValidNumber(Number(k), 0, 1);
+      assertValidNumber(v, 0, 0xffffffff);
+    });
+    opts.colors = options.colors;
+  }
+
+  return opts;
 };
