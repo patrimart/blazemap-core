@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/patrimart/blazemap-core/blob/main/LICENSE)
 [![npm version](https://img.shields.io/npm/v/@blazemap/core.svg?style=flat)](https://www.npmjs.com/package/@blazemap/core)
 
-A blazing fast heatmap library. GPU-accelerated by GPU.js. Written in TypeScript.
+A blazing fast heatmap library. GPU-accelerated by [GPU.js](https://github.com/gpujs/gpu.js/). Written in TypeScript.
 
 ## Installation
 
@@ -21,13 +21,13 @@ yarn add @blazemap/core
 
 ---
 
-## Other Libraries
+## Related Libraries
 
 - [@blazemap/react](#) - coming soon
 
 - [@blazemap/react-leaflet](#) - coming soon
 
-- [@blazemap/react-google](#) - coming soon
+- [@blazemap/react-google](#) - possibly coming soon
 
 ---
 
@@ -36,6 +36,8 @@ yarn add @blazemap/core
 Basic Blazemap initialization.
 
 ```ts
+import { blazemap } from '@blazemap/core`;
+
 const blaze = blazemap(canvasElement);
 
 blaze.setPoints([
@@ -49,7 +51,7 @@ blaze.render();
 Advanced Blazemap initialization.
 
 ```ts
-import { colorsCold } from '@blazemap/core`;
+import { blazemap, colorsCold, BlazemapOptions } from '@blazemap/core`;
 
 const options: Partial<BlazemapOptions> = {
   radius: 20,
@@ -69,7 +71,7 @@ blaze.setPoints([
 blaze.render();
 ```
 
-### Resizing
+### Resize
 
 Resizing the Blazemap canvas is a performance-heavy operation. It is likely to not exceed 60 FPS (`resize()` and `resizeTo(w, h)`). It's advised to debounce calls to these functions.
 
@@ -85,7 +87,7 @@ Invoke the `destroy()` function when the `<canvas />` is removed.
 
 ## Interface
 
-The interface is basically the initializer and the returned functions.
+The interface is basically the initializer and the returned functions. Some type aliases are intended to increase clarity.
 
 ```ts
 blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number)
@@ -169,7 +171,7 @@ Available color gradients:
 
 ## Performance
 
-Show performance benchmarks here.
+Show performance benchmarks here. Coming soon.
 
 ---
 
