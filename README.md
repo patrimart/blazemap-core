@@ -117,7 +117,7 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number
 
 - `resizeTo(w: number, h: number)`: Resizes the heatmap and sets the canvas size.
 
-- `setHeatmap(radius: number, blur: number, colors?: ColorGradient)`: Sets the visual paramters fot the heatmap.
+- `setHeatmap(radius: number, blur: number, colors?: ColorGradient)`: Sets the visual parameters fot the heatmap.
 
 - `setPoints(points: Points)`: Replaces the points in the heatmap.
 
@@ -129,7 +129,7 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number
 // Float from 0 to 1
 export type Proportion = number;
 
-// Unsinged 32-bit Integer
+// Unsigned 32-bit Integer
 export type HexU32 = number;
 
 // Defines the color gradient of the heatmap.
