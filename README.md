@@ -1,5 +1,8 @@
 # @blazemap/core
 
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/patrimart/blazemap-core/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/@blazemap/core.svg?style=flat)](https://www.npmjs.com/package/@blazemap/core)
+
 A blazing fast heatmap library. GPU-accelerated by GPU.js. Written in TypeScript.
 
 ## Installation
@@ -68,7 +71,7 @@ blaze.render();
 
 ### Resizing
 
-Resizing the Blazemap canvas is a performance-heavy operation. It is likely to not exceed 60 FPS. It's advised to debounce calls to these functions.
+Resizing the Blazemap canvas is a performance-heavy operation. It is likely to not exceed 60 FPS (`resize()` and `resizeTo(w, h)`). It's advised to debounce calls to these functions.
 
 ### Render
 
@@ -98,13 +101,13 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number
 
 #### Returns
 
-- `addPoint(...points: Points)`: addPoint
+- `addPoint(...points: Points)`: Add one or more points to the heatmap.
 
-- `clearPoints()`: clearPoints
+- `clearPoints()`: Remove all points from the heatmap.
 
 - `destroy()`: Cleans up the Blazemap resources.
 
-- `modifyPoints(fn: (ps: Points) => Points)`: modifyPoints
+- `modifyPoints(fn: (ps: Points) => Points)`: Accepts a "reducer" to modify the points.
 
 - `render()`: Renders the heatmap to the canvas.
 
@@ -112,9 +115,9 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number
 
 - `resizeTo(w: number, h: number)`: Resizes the heatmap and sets the canvas size.
 
-- `setHeatmap(arg: { radius: number, blur: number, colors: ColorGradient })`: setHeatmap
+- `setHeatmap(radius: number, blur: number, colors?: ColorGradient)`: Sets the visual paramters fot the heatmap.
 
-- `setPoints(points: Points)`: setPoints
+- `setPoints(points: Points)`: Replaces the points in the heatmap.
 
 ---
 

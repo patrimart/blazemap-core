@@ -77,7 +77,7 @@ export const blazemap = (
    * PUBLIC FUNCTIONS
    */
 
-  const setHeatmap = (radius: number, blur: number, colors: ColorGradient) => {
+  const setHeatmap = (radius: number, blur: number, colors?: ColorGradient) => {
     opts = validateOptions(opts, { radius, blur, colors });
     colorScale = genColorScale(opts.colors);
     findMaxCluster();
