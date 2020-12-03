@@ -11,7 +11,7 @@ export type KernelInit = (
   maxWeight: number
 ) => void;
 
-export function kernelInit(
+export function kernel(
   this: IKernelFunctionThis<{ maxPoints: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
@@ -63,7 +63,7 @@ export function kernelInit(
   );
 }
 
-export const kernel = (new Function(
+export const kernelInit = (new Function(
   'points',
   'radius',
   'blur',
@@ -71,7 +71,7 @@ export const kernel = (new Function(
   'maxWeight',
   `{
     function clampit(v) {
-        return Math.round(Math.max(Math.min(v, 255), 0));
+      return Math.round(Math.max(Math.min(v, 255), 0));
     }
     function distance(x1, y1, x2, y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -90,7 +90,9 @@ export const kernel = (new Function(
     var x = this.thread.x;
     var y = this.thread.y;
     var weight = 0;
-    for (var i = 0; i < this.constants.pointCount; i++) {
+    for (var i = 0; i < this.constants.maxPoints; i++) {
+        if (points[i][2] == 10000)
+            break;
         var d = distance(points[i][0], points[i][1], x, y);
         var w = easeFade(d, radius, blur);
         weight += points[i][2] * w;

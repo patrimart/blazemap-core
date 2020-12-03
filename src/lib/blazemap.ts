@@ -99,7 +99,7 @@ export const blazemap = (
   const clearPoints = () => setPoints([]);
 
   const render = () => {
-    console.time();
+    // console.time();
     currentKernel?.(
       (pts.concat([EOP]) as unknown) as number[][],
       opts.radius,
@@ -107,7 +107,7 @@ export const blazemap = (
       (colorScale as unknown) as number[][],
       maxWeight
     );
-    console.timeEnd();
+    // console.timeEnd();
   };
 
   const destroy = () => gpu.destroy();
