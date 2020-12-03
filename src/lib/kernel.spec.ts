@@ -2,7 +2,7 @@ import test from 'ava';
 
 import { kernelInit } from './kernel';
 import { HexU8, Proportion } from './types';
-import { genColorScale } from './utils';
+import { EOP, genColorScale } from './utils';
 
 test('kernel', (t) => {
   const run = () => {
@@ -11,6 +11,7 @@ test('kernel', (t) => {
       [145, 130, 1],
       [145, 130, 1],
       [110, 150, 1],
+      EOP as never,
     ];
     const result: number[] = [];
 
@@ -19,7 +20,8 @@ test('kernel', (t) => {
     function color(r: number, g: number, b: number): void;
     function color(r: number, g: number, b: number, a: number): void;
     function color(...rgba: number[]) {
-      console.log(JSON.stringify(rgba));
+      // console.log(JSON.stringify(rgba));
+      result.push(...rgba);
     }
 
     for (let x = 0; x < 200; x++) {
@@ -57,5 +59,5 @@ test('kernel', (t) => {
     return result;
   };
 
-  t.is(run(), []);
+  t.is(run().length, 160_000);
 });
