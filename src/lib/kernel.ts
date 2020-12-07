@@ -48,7 +48,7 @@ export function kernel(
 
   for (let i = 0; i < this.constants.maxPoints; i++) {
     if (points[i][2] == 10_000) break;
-    const d = distance(points[i][0], points[i][1], x, y);
+    const d = distance(points[i][0], this.output.y - points[i][1], x, y);
     const w = easeFade(d, radius, blur);
     weight += points[i][2] * w;
   }
@@ -93,7 +93,7 @@ export const kernelInit = (new Function(
     for (var i = 0; i < this.constants.maxPoints; i++) {
         if (points[i][2] == 10000)
             break;
-        var d = distance(points[i][0], points[i][1], x, y);
+        var d = distance(points[i][0], this.output.y - points[i][1], x, y);
         var w = easeFade(d, radius, blur);
         weight += points[i][2] * w;
     }

@@ -1,5 +1,6 @@
 import test from 'ava';
 
+import { colorsWarm } from './colors';
 import * as u from './utils';
 
 test('utilities', (t) => {
@@ -35,4 +36,37 @@ test('utilities', (t) => {
       1: 0xff0000ee,
     }).length === 256
   );
+
+  t.deepEqual(
+    u.DEFAULT_OPTIONS({
+      getBoundingClientRect: () => ({ width: 0, height: 0 }),
+    } as never),
+    {
+      width: 0,
+      height: 0,
+      radius: 20,
+      blur: 16,
+      colors: colorsWarm,
+    }
+  );
+
+  const OPTIONS = {
+    width: 400,
+    height: 400,
+    radius: 20,
+    blur: 16,
+    colors: colorsWarm,
+  };
+
+  t.deepEqual(u.validateOptions(OPTIONS, OPTIONS), OPTIONS);
+
+  t.throws(() => u.validateOptions(OPTIONS, { width: -1 }));
+
+  t.throws(() => u.validateOptions(OPTIONS, { height: -1 }));
+
+  t.throws(() => u.validateOptions(OPTIONS, { radius: -1 }));
+
+  t.throws(() => u.validateOptions(OPTIONS, { blur: -1 }));
+
+  t.throws(() => u.validateOptions(OPTIONS, { colors: { 3: 0 } }));
 });

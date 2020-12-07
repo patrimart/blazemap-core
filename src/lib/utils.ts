@@ -138,7 +138,7 @@ export const validateOptions = (
   }
 
   if (options.colors) {
-    Object.entries(options.colors).forEach((k, v) => {
+    Object.entries(options.colors).forEach(([k, v]) => {
       assertValidNumber(Number(k), 0, 1);
       assertValidNumber(v, 0, 0xffffffff);
     });

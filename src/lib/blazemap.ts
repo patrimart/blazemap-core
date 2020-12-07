@@ -27,7 +27,7 @@ export const blazemap = (
   let opts = validateOptions(DEFAULT_OPTIONS(canvas), options);
   let colorScale = genColorScale(opts.colors);
   let pts: Point[] = [];
-  let maxWeight = 0;
+  let maxWeight = 1000;
   let currentKernel: IKernelRunShortcut | undefined;
 
   const context = canvas.getContext('webgl2', { premultipliedAlpha: false });
@@ -60,7 +60,7 @@ export const blazemap = (
   createKernel();
 
   const findMaxCluster = () => {
-    const diam = opts.radius * 2;
+    const diam = (opts.radius - opts.blur * -0.5) * 2;
     const grid = new Array(
       Math.ceil((opts.width / diam) * (opts.height / diam))
     );
@@ -115,7 +115,6 @@ export const blazemap = (
   const clearPoints = () => setPoints([]);
 
   const render = () => {
-    // console.time();
     currentKernel?.(
       (pts.concat([EOP]) as unknown) as number[][],
       opts.radius,
@@ -123,7 +122,6 @@ export const blazemap = (
       (colorScale as unknown) as number[][],
       maxWeight
     );
-    // console.timeEnd();
   };
 
   const destroy = () => gpu.destroy();

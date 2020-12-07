@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { kernelInit } from './kernel';
+import { kernel } from './kernel';
 import { HexU8, Proportion } from './types';
 import { EOP, genColorScale } from './utils';
 
@@ -26,7 +26,7 @@ test('kernel', (t) => {
 
     for (let x = 0; x < 200; x++) {
       for (let y = 0; y < 200; y++) {
-        kernelInit.call(
+        kernel.call(
           {
             output: {
               x: 200,
