@@ -1,0 +1,9 @@
+.*
+node_modules
+test
+src/**
+coverage
+*.log
+package-lock.json
+tsconfig.*
+yarn.lock
