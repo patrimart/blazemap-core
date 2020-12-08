@@ -37,30 +37,29 @@ export const blazemap = (
 
   const createKernel = () => {
     currentKernel?.destroy();
-    const k = gpu.createKernel(kernelInit, {
-      argumentTypes: {
-        a: 'Array',
-        b: 'Integer',
-        c: 'Integer',
-        d: 'Array',
-        e: 'Integer',
-      },
-      graphical: true,
-      immutable: true,
-      dynamicArguments: true,
-      dynamicOutput: true,
-      constants: { maxPoints },
-      output: [opts.width, opts.height],
-    });
-    k.setLoopMaxIterations(maxPoints);
-
-    currentKernel = k;
+    currentKernel = gpu
+      .createKernel(kernelInit, {
+        argumentTypes: {
+          a: 'Array',
+          b: 'Integer',
+          c: 'Integer',
+          d: 'Array',
+          e: 'Integer',
+        },
+        graphical: true,
+        immutable: true,
+        dynamicArguments: true,
+        dynamicOutput: true,
+        constants: { maxPoints },
+        output: [opts.width, opts.height],
+      })
+      .setLoopMaxIterations(maxPoints);
   };
 
   createKernel();
 
   const findMaxCluster = () => {
-    const diam = (opts.radius - opts.blur * -0.5) * 2;
+    const diam = (opts.radius - opts.blur * 0.5) * 1.5;
     const grid = new Array(
       Math.ceil((opts.width / diam) * (opts.height / diam))
     );
