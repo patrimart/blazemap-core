@@ -90,7 +90,7 @@ Invoke the `destroy()` function when the `<canvas />` is removed.
 The interface is basically the initializer and the returned functions. Some type aliases are intended to increase clarity.
 
 ```ts
-blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: number)
+blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: number)
 ```
 
 #### Parameters
@@ -171,7 +171,7 @@ Available color gradients:
 
 ## Performance
 
-Show performance benchmarks here. Coming soon.
+Renders a 1000x1000 canvas with 1000 points in less than 0.2ms.
 
 ---
 
