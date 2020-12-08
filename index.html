@@ -67,7 +67,185 @@
 				<a href="#blazemapcore" id="blazemapcore" style="color: inherit; text-decoration: none;">
 					<h1>@blazemap/core</h1>
 				</a>
-				<p>A blazing fast heatmap library.</p>
+				<p><a href="https://github.com/patrimart/blazemap-core/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="GitHub license"></a>
+				<a href="https://www.npmjs.com/package/@blazemap/core"><img src="https://img.shields.io/npm/v/@blazemap/core.svg?style=flat" alt="npm version"></a></p>
+				<p>A blazing fast heatmap library. GPU-accelerated by <a href="https://github.com/gpujs/gpu.js/">GPU.js</a>. Written in TypeScript.</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<a href="#npm" id="npm" style="color: inherit; text-decoration: none;">
+					<h3>npm</h3>
+				</a>
+				<pre><code class="language-bash">npm install @blazemap/core --save</code></pre>
+				<a href="#yarn" id="yarn" style="color: inherit; text-decoration: none;">
+					<h3>yarn</h3>
+				</a>
+				<pre><code class="language-bash">yarn add @blazemap/core</code></pre>
+				<hr>
+				<a href="#related-libraries" id="related-libraries" style="color: inherit; text-decoration: none;">
+					<h2>Related Libraries</h2>
+				</a>
+				<ul>
+					<li><p><a href="#">@blazemap/react</a> - coming soon</p>
+					</li>
+					<li><p><a href="#">@blazemap/react-leaflet</a> - coming soon</p>
+					</li>
+					<li><p><a href="#">@blazemap/react-google</a> - possibly coming soon</p>
+					</li>
+				</ul>
+				<hr>
+				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
+					<h2>How To Use</h2>
+				</a>
+				<p>Basic Blazemap initialization.</p>
+				<pre><code class="language-ts">import { blazemap } from &#x27;@blazemap/core`;
+
+const blaze = blazemap(canvasElement);
+
+blaze.setPoints([
+  [100, 100, 1],
+  [145, 130, 1],
+]);
+
+blaze.render();</code></pre>
+				<p>Advanced Blazemap initialization.</p>
+				<pre><code class="language-ts">import { blazemap, colorsCold, BlazemapOptions } from &#x27;@blazemap/core`;
+
+const options: Partial&lt;BlazemapOptions&gt; = {
+  radius: 20,
+  blur: 10,
+  colors: colorsCold,
+};
+
+const maxPoints = 2000;
+
+const blaze = blazemap(canvasElement, options, maxPoints);
+
+blaze.setPoints([
+  [100, 100, 1],
+  [145, 130, 1],
+]);
+
+blaze.render();</code></pre>
+				<a href="#resize" id="resize" style="color: inherit; text-decoration: none;">
+					<h3>Resize</h3>
+				</a>
+				<p>Resizing the Blazemap canvas is a performance-heavy operation. It is likely to not exceed 60 FPS (<code>resize()</code> and <code>resizeTo(w, h)</code>). It&#39;s advised to debounce calls to these functions.</p>
+				<a href="#render" id="render" style="color: inherit; text-decoration: none;">
+					<h3>Render</h3>
+				</a>
+				<p>The <code>render()</code> function must be called after any changes to the Blazemap. A re-render will easily exceed 60 FPS.</p>
+				<a href="#destroy" id="destroy" style="color: inherit; text-decoration: none;">
+					<h3>Destroy</h3>
+				</a>
+				<p>Invoke the <code>destroy()</code> function when the <code>&lt;canvas /&gt;</code> is removed.</p>
+				<hr>
+				<a href="#interface" id="interface" style="color: inherit; text-decoration: none;">
+					<h2>Interface</h2>
+				</a>
+				<p>The interface is basically the initializer and the returned functions. Some type aliases are intended to increase clarity.</p>
+				<pre><code class="language-ts">blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: <span class="hljs-built_in">number</span>)</code></pre>
+				<a href="#parameters" id="parameters" style="color: inherit; text-decoration: none;">
+					<h4>Parameters</h4>
+				</a>
+				<ul>
+					<li><p><code>canvas: HTMLCanvasElement</code> - The canvas on which to render the heatmap.</p>
+					</li>
+					<li><p><code>options: BlazemapOptions</code> - (Default: <code>{ radius: 20, blur: 16, colors: colorsWarm }</code>) - Initial options to set.</p>
+					</li>
+					<li><p><code>maxPoints: number</code> - (Default: <code>1000</code>) Sets the maximum points to display.</p>
+					</li>
+				</ul>
+				<a href="#returns" id="returns" style="color: inherit; text-decoration: none;">
+					<h4>Returns</h4>
+				</a>
+				<ul>
+					<li><p><code>addPoint(...points: Points)</code>: Add one or more points to the heatmap.</p>
+					</li>
+					<li><p><code>clearPoints()</code>: Remove all points from the heatmap.</p>
+					</li>
+					<li><p><code>destroy()</code>: Cleans up the Blazemap resources.</p>
+					</li>
+					<li><p><code>modifyPoints(fn: (ps: Points) =&gt; Points)</code>: Accepts a &quot;reducer&quot; to modify the points.</p>
+					</li>
+					<li><p><code>render()</code>: Renders the heatmap to the canvas.</p>
+					</li>
+					<li><p><code>resize()</code>: Resizes the heatmap using the canvas size.</p>
+					</li>
+					<li><p><code>resizeTo(w: number, h: number)</code>: Resizes the heatmap and sets the canvas size.</p>
+					</li>
+					<li><p><code>setHeatmap(radius: number, blur: number, colors?: ColorGradient)</code>: Sets the visual parameters fot the heatmap.</p>
+					</li>
+					<li><p><code>setPoints(points: Points)</code>: Replaces the points in the heatmap.</p>
+					</li>
+				</ul>
+				<hr>
+				<a href="#types" id="types" style="color: inherit; text-decoration: none;">
+					<h2>Types</h2>
+				</a>
+				<pre><code class="language-ts"><span class="hljs-comment">// Float from 0 to 1</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Proportion = <span class="hljs-built_in">number</span>;
+
+<span class="hljs-comment">// Unsigned 32-bit Integer</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> HexU32 = <span class="hljs-built_in">number</span>;
+
+<span class="hljs-comment">// Defines the color gradient of the heatmap.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> ColorGradient = Readonly&lt;Record&lt;Proportion, HexU32&gt;&gt;;
+
+<span class="hljs-comment">// x, y coordinates. The proportional weight of the point 0-1.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Point = <span class="hljs-keyword">readonly</span> [x: <span class="hljs-built_in">number</span>, <span class="hljs-attr">y</span>: <span class="hljs-built_in">number</span>, <span class="hljs-attr">p</span>: Proportion];
+
+<span class="hljs-comment">// An array of Points</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Points = ReadonlyArray&lt;Point&gt;;
+
+<span class="hljs-comment">// Possible options to set for Blazemap.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> BlazemapOptions {
+  <span class="hljs-keyword">readonly</span> width: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">readonly</span> height: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">readonly</span> radius: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">readonly</span> blur: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">readonly</span> colors: ColorGradient;
+}</code></pre>
+				<a href="#pre-defined-color-gradients" id="pre-defined-color-gradients" style="color: inherit; text-decoration: none;">
+					<h2>Pre-defined Color Gradients</h2>
+				</a>
+				<p>Import a color gradient:</p>
+				<pre><code class="language-ts"><span class="hljs-keyword">import</span> { colorsHot } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@blazemap/core&#x27;</span>;</code></pre>
+				<p>Available color gradients:</p>
+				<ul>
+					<li>colorsHot</li>
+					<li>colorsWarm</li>
+					<li>colorsCold</li>
+					<li>colorsGrey</li>
+					<li>colorsWhite</li>
+				</ul>
+				<hr>
+				<a href="#performance" id="performance" style="color: inherit; text-decoration: none;">
+					<h2>Performance</h2>
+				</a>
+				<p>Show performance benchmarks here. Coming soon.</p>
+				<hr>
+				<a href="#mit-license" id="mit-license" style="color: inherit; text-decoration: none;">
+					<h2>MIT License</h2>
+				</a>
+				<a href="#copyright-c-2020-patrick-martin" id="copyright-c-2020-patrick-martin" style="color: inherit; text-decoration: none;">
+					<h3>Copyright (c) 2020 Patrick Martin</h3>
+				</a>
+				<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+					of this software and associated documentation files (the &quot;Software&quot;), to deal
+					in the Software without restriction, including without limitation the rights
+					to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+					copies of the Software, and to permit persons to whom the Software is
+				furnished to do so, subject to the following conditions:</p>
+				<p>The above copyright notice and this permission notice shall be included in all
+				copies or substantial portions of the Software.</p>
+				<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+					IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+					FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+					AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+					LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+					OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+				SOFTWARE.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -99,6 +277,9 @@
 						<a href="globals.html#hexu8" class="tsd-kind-icon">Hex<wbr>U8</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#kernelinit" class="tsd-kind-icon">Kernel<wbr>Init</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#point" class="tsd-kind-icon">Point</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
@@ -109,6 +290,9 @@
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#rgba" class="tsd-kind-icon">RGBa</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#eop" class="tsd-kind-icon">EOP</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#clampproportion" class="tsd-kind-icon">clamp<wbr>Proportion</a>
@@ -125,6 +309,15 @@
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#clampu8" class="tsd-kind-icon">clamp<wbr>U8</a>
 					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#kernelinit" class="tsd-kind-icon">kernel<wbr>Init</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#default_options" class="tsd-kind-icon">DEFAULT_<wbr>OPTIONS</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#assertvalidnumber" class="tsd-kind-icon">assert<wbr>Valid<wbr>Number</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#blazemap" class="tsd-kind-icon">blazemap</a>
 					</li>
@@ -136,6 +329,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#gencolorscale" class="tsd-kind-icon">gen<wbr>Color<wbr>Scale</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#kernel" class="tsd-kind-icon">kernel</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#normalize" class="tsd-kind-icon">normalize</a>
@@ -154,6 +350,21 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#validateoptions" class="tsd-kind-icon">validate<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colorscold" class="tsd-kind-icon">colors<wbr>Cold</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colorsgrey" class="tsd-kind-icon">colors<wbr>Grey</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colorshot" class="tsd-kind-icon">colors<wbr>Hot</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colorswarm" class="tsd-kind-icon">colors<wbr>Warm</a>
+					</li>
+					<li class=" tsd-kind-object-literal">
+						<a href="globals.html#colorswhite" class="tsd-kind-icon">colors<wbr>White</a>
 					</li>
 				</ul>
 			</nav>
