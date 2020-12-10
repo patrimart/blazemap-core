@@ -11,7 +11,7 @@ export type KernelInit = (
   maxWeight: number
 ) => void;
 
-export function kernelInit(
+export function kernel(
   this: IKernelFunctionThis<{ maxPoints: number }>,
   points: [x: number, y: number, p: Proportion][],
   radius: number,
@@ -63,7 +63,7 @@ export function kernelInit(
   );
 }
 
-export const kernel = (new Function(
+export const kernelInit = (new Function(
   'points',
   'radius',
   'blur',
