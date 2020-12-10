@@ -175,14 +175,14 @@ export const validateOptions = (
 };
 
 /**
- * Delays invocation until the next animation frame, discarding subsequent invocations in between.
+ * Delays invocation until the next animation frame (or tick).
  */
 export const throttle = <Fn extends (...args: any[]) => any>(fn: Fn) => {
   let resp: Promise<ReturnType<Fn>> | null = null;
   return (...args: Parameters<Fn>) => {
     if (resp === null) {
       resp = new Promise((resolve) =>
-        (globalThis?.requestAnimationFrame ?? setTimeout)(() => {
+        (globalThis?.requestAnimationFrame ?? globalThis.setTimeout)(() => {
           resp = null;
           resolve(fn(...args));
         })

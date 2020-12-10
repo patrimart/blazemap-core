@@ -142,3 +142,5 @@ export const blazemap = (
     destroy,
   };
 };
+
+export type BlazeMap = ReturnType<typeof blazemap>;

@@ -89,8 +89,10 @@ Invoke the `destroy()` function when the `<canvas />` is removed.
 
 The interface is basically the initializer and the returned functions. Some type aliases are intended to increase clarity.
 
+### `blazemap`
+
 ```ts
-blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: number)
+blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: number): BlazeMap
 ```
 
 #### Parameters
@@ -120,6 +122,14 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: numbe
 - `setHeatmap(radius: HexU8, blur: HexU8, colors?: ColorGradient, colorSteps?: HexU8)`: Sets the visual parameters fot the heatmap.
 
 - `setPoints(points: Points)`: Replaces the points in the heatmap.
+
+### `throttle`
+
+Delays invoking `fn` until the next animation frame (or tick).
+
+```ts
+throttle<Fn extends (...args: any[]) => any>(fn: Fn) => (...args: Parameters<Fn>) => Promise<ReturnType<Fn>>;
+```
 
 ---
 
