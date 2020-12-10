@@ -144,14 +144,17 @@ blaze.render();</code></pre>
 					<h2>Interface</h2>
 				</a>
 				<p>The interface is basically the initializer and the returned functions. Some type aliases are intended to increase clarity.</p>
-				<pre><code class="language-ts">blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoint?: <span class="hljs-built_in">number</span>)</code></pre>
+				<a href="#blazemap" id="blazemap" style="color: inherit; text-decoration: none;">
+					<h3><code>blazemap</code></h3>
+				</a>
+				<pre><code class="language-ts">blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: <span class="hljs-built_in">number</span>): BlazeMap</code></pre>
 				<a href="#parameters" id="parameters" style="color: inherit; text-decoration: none;">
 					<h4>Parameters</h4>
 				</a>
 				<ul>
 					<li><p><code>canvas: HTMLCanvasElement</code> - The canvas on which to render the heatmap.</p>
 					</li>
-					<li><p><code>options: BlazemapOptions</code> - (Default: <code>{ radius: 20, blur: 16, colors: colorsWarm }</code>) - Initial options to set.</p>
+					<li><p><code>options: BlazemapOptions</code> - (Default: <code>{ radius: 20, blur: 16, colors: colorsWarm, colorSteps: 0 }</code>) - Initial options to set.</p>
 					</li>
 					<li><p><code>maxPoints: number</code> - (Default: <code>1000</code>) Sets the maximum points to display.</p>
 					</li>
@@ -172,19 +175,30 @@ blaze.render();</code></pre>
 					</li>
 					<li><p><code>resize()</code>: Resizes the heatmap using the canvas size.</p>
 					</li>
-					<li><p><code>resizeTo(w: number, h: number)</code>: Resizes the heatmap and sets the canvas size.</p>
+					<li><p><code>resizeTo(w: HexU16, h: HexU16)</code>: Resizes the heatmap and sets the canvas size.</p>
 					</li>
-					<li><p><code>setHeatmap(radius: number, blur: number, colors?: ColorGradient)</code>: Sets the visual parameters fot the heatmap.</p>
+					<li><p><code>setHeatmap(radius: HexU8, blur: HexU8, colors?: ColorGradient, colorSteps?: HexU8)</code>: Sets the visual parameters fot the heatmap.</p>
 					</li>
 					<li><p><code>setPoints(points: Points)</code>: Replaces the points in the heatmap.</p>
 					</li>
 				</ul>
+				<a href="#throttle" id="throttle" style="color: inherit; text-decoration: none;">
+					<h3><code>throttle</code></h3>
+				</a>
+				<p>Delays invoking <code>fn</code> until the next animation frame (or tick).</p>
+				<pre><code class="language-ts">throttle&lt;Fn <span class="hljs-keyword">extends</span> (...args: <span class="hljs-built_in">any</span>[]) =&gt; <span class="hljs-built_in">any</span>&gt;<span class="hljs-function">(<span class="hljs-params">fn: Fn</span>) =&gt;</span> <span class="hljs-function">(<span class="hljs-params">...args: Parameters&lt;Fn&gt;</span>) =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;ReturnType&lt;Fn&gt;&gt;;</code></pre>
 				<hr>
 				<a href="#types" id="types" style="color: inherit; text-decoration: none;">
 					<h2>Types</h2>
 				</a>
 				<pre><code class="language-ts"><span class="hljs-comment">// Float from 0 to 1</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> Proportion = <span class="hljs-built_in">number</span>;
+
+<span class="hljs-comment">// Unsigned 8-bit Integer</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> HexU8 = <span class="hljs-built_in">number</span>;
+
+<span class="hljs-comment">// Unsigned 16-bit Integer</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> HexU16 = <span class="hljs-built_in">number</span>;
 
 <span class="hljs-comment">// Unsigned 32-bit Integer</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">type</span> HexU32 = <span class="hljs-built_in">number</span>;
@@ -200,11 +214,12 @@ blaze.render();</code></pre>
 
 <span class="hljs-comment">// Possible options to set for Blazemap.</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">interface</span> BlazemapOptions {
-  <span class="hljs-keyword">readonly</span> width: <span class="hljs-built_in">number</span>;
-  <span class="hljs-keyword">readonly</span> height: <span class="hljs-built_in">number</span>;
-  <span class="hljs-keyword">readonly</span> radius: <span class="hljs-built_in">number</span>;
-  <span class="hljs-keyword">readonly</span> blur: <span class="hljs-built_in">number</span>;
+  <span class="hljs-keyword">readonly</span> width: HexU16;
+  <span class="hljs-keyword">readonly</span> height: HexU16;
+  <span class="hljs-keyword">readonly</span> radius: HexU8;
+  <span class="hljs-keyword">readonly</span> blur: HexU8;
   <span class="hljs-keyword">readonly</span> colors: ColorGradient;
+  <span class="hljs-keyword">readonly</span> colorSteps: HexU8;
 }</code></pre>
 				<a href="#pre-defined-color-gradients" id="pre-defined-color-gradients" style="color: inherit; text-decoration: none;">
 					<h2>Pre-defined Color Gradients</h2>
@@ -223,7 +238,7 @@ blaze.render();</code></pre>
 				<a href="#performance" id="performance" style="color: inherit; text-decoration: none;">
 					<h2>Performance</h2>
 				</a>
-				<p>Show performance benchmarks here. Coming soon.</p>
+				<p>Renders a 1000x1000 canvas with 1000 points in less than 1 ms.</p>
 				<hr>
 				<a href="#mit-license" id="mit-license" style="color: inherit; text-decoration: none;">
 					<h2>MIT License</h2>
@@ -260,6 +275,9 @@ blaze.render();</code></pre>
 				<ul class="before-current">
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/blazemapoptions.html" class="tsd-kind-icon">Blazemap<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#blazemap" class="tsd-kind-icon">Blaze<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#colorgradient" class="tsd-kind-icon">Color<wbr>Gradient</a>
@@ -338,6 +356,9 @@ blaze.render();</code></pre>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#pointeq" class="tsd-kind-icon">point<wbr>Eq</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#throttle" class="tsd-kind-icon">throttle</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#tohex" class="tsd-kind-icon">to<wbr>Hex</a>

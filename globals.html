@@ -76,6 +76,7 @@
 						<section class="tsd-index-section ">
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="globals.html#blazemap" class="tsd-kind-icon">Blaze<wbr>Map</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#colorgradient" class="tsd-kind-icon">Color<wbr>Gradient</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#hexu16" class="tsd-kind-icon">Hex<wbr>U16</a></li>
 								<li class="tsd-kind-type-alias"><a href="globals.html#hexu24" class="tsd-kind-icon">Hex<wbr>U24</a></li>
@@ -112,6 +113,7 @@
 								<li class="tsd-kind-function"><a href="globals.html#kernel" class="tsd-kind-icon">kernel</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#normalize" class="tsd-kind-icon">normalize</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#pointeq" class="tsd-kind-icon">point<wbr>Eq</a></li>
+								<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#throttle" class="tsd-kind-icon">throttle</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#tohex" class="tsd-kind-icon">to<wbr>Hex</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#torgba" class="tsd-kind-icon">to<wbr>Rgba</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#tweenrgbas" class="tsd-kind-icon">tween<wbr>Rgbas</a></li>
@@ -134,12 +136,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="blazemap" class="tsd-anchor"></a>
+					<h3>Blaze<wbr>Map</h3>
+					<div class="tsd-signature tsd-kind-icon">Blaze<wbr>Map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReturnType</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">typeof </span><a href="globals.html#blazemap" class="tsd-signature-type">blazemap</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/blazemap.ts#L146">lib/blazemap.ts:146</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="colorgradient" class="tsd-anchor"></a>
 					<h3>Color<wbr>Gradient</h3>
 					<div class="tsd-signature tsd-kind-icon">Color<wbr>Gradient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#proportion" class="tsd-signature-type">Proportion</a><span class="tsd-signature-symbol">, </span><a href="globals.html#hexu32" class="tsd-signature-type">HexU32</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L15">lib/types.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L15">lib/types.ts:15</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -149,7 +161,7 @@
 					<div class="tsd-signature tsd-kind-icon">Hex<wbr>U16<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L5">lib/types.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L5">lib/types.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -159,7 +171,7 @@
 					<div class="tsd-signature tsd-kind-icon">Hex<wbr>U24<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L7">lib/types.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L7">lib/types.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -169,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">Hex<wbr>U32<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L9">lib/types.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L9">lib/types.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -179,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">Hex<wbr>U8<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L3">lib/types.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L3">lib/types.ts:3</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -189,7 +201,7 @@
 					<div class="tsd-signature tsd-kind-icon">Kernel<wbr>Init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IKernelFunctionThis</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>maxPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">&gt;</span>, points<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Proportion</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span>, radius<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, colorScale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span>r<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>g<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span>, maxWeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/kernel.ts#L5">lib/kernel.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/kernel.ts#L5">lib/kernel.ts:5</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -235,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">Point<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-symbol">[</span>x<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span>y<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span>p<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Proportion</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L11">lib/types.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L11">lib/types.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -245,7 +257,7 @@
 					<div class="tsd-signature tsd-kind-icon">Points<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ReadonlyArray</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#point" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L13">lib/types.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L13">lib/types.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -255,7 +267,7 @@
 					<div class="tsd-signature tsd-kind-icon">Proportion<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L1">lib/types.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L1">lib/types.ts:1</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -265,7 +277,7 @@
 					<div class="tsd-signature tsd-kind-icon">RGBa<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">readonly </span><span class="tsd-signature-symbol">[</span>r<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>g<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>b<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">, </span>a<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HexU8</span><span class="tsd-signature-symbol">]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/types.ts#L17">lib/types.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/types.ts#L17">lib/types.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -278,7 +290,7 @@
 					<div class="tsd-signature tsd-kind-icon">EOP<span class="tsd-signature-symbol">:</span> <a href="globals.html#point" class="tsd-signature-type">Point</a><span class="tsd-signature-symbol"> = [0, 0, 10_000]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L92">lib/utils.ts:92</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L112">lib/utils.ts:112</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -288,7 +300,7 @@
 					<div class="tsd-signature tsd-kind-icon">clamp<wbr>Proportion<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = clamp(0, 1)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L15">lib/utils.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L22">lib/utils.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -298,7 +310,7 @@
 					<div class="tsd-signature tsd-kind-icon">clamp<wbr>U16<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = clamp(0, 0xffff)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L9">lib/utils.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L16">lib/utils.ts:16</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -308,7 +320,7 @@
 					<div class="tsd-signature tsd-kind-icon">clamp<wbr>U24<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = clamp(0, 0xffffff)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L11">lib/utils.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L18">lib/utils.ts:18</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -318,7 +330,7 @@
 					<div class="tsd-signature tsd-kind-icon">clamp<wbr>U32<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = clamp(0, 0xffffffff)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L13">lib/utils.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L20">lib/utils.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -328,7 +340,7 @@
 					<div class="tsd-signature tsd-kind-icon">clamp<wbr>U8<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">(Anonymous function)</span><span class="tsd-signature-symbol"> = clamp(0, 0xff)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L7">lib/utils.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L14">lib/utils.ts:14</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -338,7 +350,7 @@
 					<div class="tsd-signature tsd-kind-icon">kernel<wbr>Init<span class="tsd-signature-symbol">:</span> <a href="globals.html#kernelinit" class="tsd-signature-type">KernelInit</a><span class="tsd-signature-symbol"> = (new Function(&#x27;points&#x27;,&#x27;radius&#x27;,&#x27;blur&#x27;,&#x27;colorScale&#x27;,&#x27;maxWeight&#x27;,&#x60;{function clampit(v) {return Math.round(Math.max(Math.min(v, 255), 0));}function distance(x1, y1, x2, y2) {return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));}function norm(v) {return (v - 0) / (255 - 0);}function easeFade(d, r, b) {if (d &lt; r - b * 0.5)return 1;return (1 -Math.min(1, (((r + b * 0.5) / (r + b * 0.5 - (r - b * 0.5))) *(d - (r - b * 0.5))) /(r + b * 0.5)));}var x &#x3D; this.thread.x;var y &#x3D; this.thread.y;var weight &#x3D; 0;for (var i &#x3D; 0; i &lt; this.constants.maxPoints; i++) {if (points[i][2] &#x3D;&#x3D; 10000)break;var d &#x3D; distance(points[i][0], this.output.y - points[i][1], x, y);var w &#x3D; easeFade(d, radius, blur);weight +&#x3D; points[i][2] * w;}var wc &#x3D; clampit((weight / maxWeight) * 255);this.color(norm(colorScale[wc][0]), norm(colorScale[wc][1]), norm(colorScale[wc][2]), norm(colorScale[wc][3]));}&#x60;) as unknown) as KernelInit</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/kernel.ts#L66">lib/kernel.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/kernel.ts#L66">lib/kernel.ts:66</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -355,7 +367,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L94">lib/utils.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L114">lib/utils.ts:114</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -378,7 +390,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L104">lib/utils.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L125">lib/utils.ts:125</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -390,7 +402,7 @@
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> min: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> max: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 10000</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> max: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 65535</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">asserts</span><span class="tsd-signature-type">v</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">number</span></h4>
@@ -401,13 +413,13 @@
 					<a name="blazemap" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> blazemap</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">blazemap<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"radius"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"blur"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colors"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>, maxPoints<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addPoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">addPoint</span><span class="tsd-signature-symbol">; </span>clearPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">clearPoints</span><span class="tsd-signature-symbol">; </span>destroy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">destroy</span><span class="tsd-signature-symbol">; </span>modifyPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">modifyPoints</span><span class="tsd-signature-symbol">; </span>render<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">render</span><span class="tsd-signature-symbol">; </span>resize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">resize</span><span class="tsd-signature-symbol">; </span>resizeTo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">resizeTo</span><span class="tsd-signature-symbol">; </span>setHeatmap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">setHeatmap</span><span class="tsd-signature-symbol">; </span>setPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">setPoints</span><span class="tsd-signature-symbol"> }</span></li>
+						<li class="tsd-signature tsd-kind-icon">blazemap<span class="tsd-signature-symbol">(</span>canvas<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">HTMLCanvasElement</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"radius"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"blur"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colors"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colorSteps"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>, maxPoints<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>addPoint<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">addPoint</span><span class="tsd-signature-symbol">; </span>clearPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">clearPoints</span><span class="tsd-signature-symbol">; </span>destroy<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">destroy</span><span class="tsd-signature-symbol">; </span>modifyPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">modifyPoints</span><span class="tsd-signature-symbol">; </span>render<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">render</span><span class="tsd-signature-symbol">; </span>resize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">resize</span><span class="tsd-signature-symbol">; </span>resizeTo<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">resizeTo</span><span class="tsd-signature-symbol">; </span>setHeatmap<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">setHeatmap</span><span class="tsd-signature-symbol">; </span>setPoints<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">setPoints</span><span class="tsd-signature-symbol"> }</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/blazemap.ts#L19">lib/blazemap.ts:19</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/blazemap.ts#L19">lib/blazemap.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -421,7 +433,7 @@
 									<h5>canvas: <span class="tsd-signature-type">HTMLCanvasElement</span></h5>
 								</li>
 								<li>
-									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"radius"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"blur"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colors"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> options: <span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">"radius"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"blur"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colors"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"colorSteps"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {}</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> maxPoints: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1000</span></h5>
@@ -474,7 +486,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L4">lib/utils.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L11">lib/utils.ts:11</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -500,7 +512,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L20">lib/utils.ts:20</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L27">lib/utils.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -520,19 +532,22 @@
 					<a name="gencolorscale" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> gen<wbr>Color<wbr>Scale</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">gen<wbr>Color<wbr>Scale<span class="tsd-signature-symbol">(</span>gradient<span class="tsd-signature-symbol">: </span><a href="globals.html#colorgradient" class="tsd-signature-type">ColorGradient</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#rgba" class="tsd-signature-type">RGBa</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">gen<wbr>Color<wbr>Scale<span class="tsd-signature-symbol">(</span>gradient<span class="tsd-signature-symbol">: </span><a href="globals.html#colorgradient" class="tsd-signature-type">ColorGradient</a>, colorSteps<span class="tsd-signature-symbol">?: </span><a href="globals.html#hexu8" class="tsd-signature-type">HexU8</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="globals.html#rgba" class="tsd-signature-type">RGBa</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L59">lib/utils.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L66">lib/utils.ts:66</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>gradient: <a href="globals.html#colorgradient" class="tsd-signature-type">ColorGradient</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> colorSteps: <a href="globals.html#hexu8" class="tsd-signature-type">HexU8</a><span class="tsd-signature-symbol"> = 0</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="globals.html#rgba" class="tsd-signature-type">RGBa</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -549,7 +564,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/kernel.ts#L14">lib/kernel.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/kernel.ts#L14">lib/kernel.ts:14</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -587,7 +602,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L23">lib/utils.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L30">lib/utils.ts:30</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -613,7 +628,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L17">lib/utils.ts:17</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L24">lib/utils.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -629,6 +644,40 @@
 						</li>
 					</ul>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+					<a name="throttle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> throttle</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">throttle&lt;Fn&gt;<span class="tsd-signature-symbol">(</span>fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Fn</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L180">lib/utils.ts:180</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Delays invocation until the next animation frame (or tick).</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>Fn<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">any</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>fn: <span class="tsd-signature-type">Fn</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+						</li>
+					</ul>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="tohex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> to<wbr>Hex</h3>
@@ -639,7 +688,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L36">lib/utils.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L43">lib/utils.ts:43</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -662,7 +711,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L26">lib/utils.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L33">lib/utils.ts:33</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -685,7 +734,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L39">lib/utils.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L46">lib/utils.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -708,22 +757,25 @@
 					<a name="validateoptions" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> validate<wbr>Options</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">validate<wbr>Options<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>radius<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a></li>
+						<li class="tsd-signature tsd-kind-icon">validate<wbr>Options<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colorSteps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>radius<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/blazemapoptions.html" class="tsd-signature-type">BlazemapOptions</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/utils.ts#L114">lib/utils.ts:114</a></li>
+									<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/utils.ts#L135">lib/utils.ts:135</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>radius<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>__namedParameters: <span class="tsd-signature-symbol">{ </span>blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colorSteps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>colors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>radius<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">; </span>width<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>blur<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>color<wbr>Steps<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>colors<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Readonly</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h5>
@@ -756,7 +808,7 @@
 					<div class="tsd-signature tsd-kind-icon">colors<wbr>Cold<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L17">lib/colors.ts:17</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L17">lib/colors.ts:17</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -765,7 +817,7 @@
 						<div class="tsd-signature tsd-kind-icon">0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 52224</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L18">lib/colors.ts:18</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L18">lib/colors.ts:18</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -775,7 +827,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1711315234</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L19">lib/colors.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L19">lib/colors.ts:19</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -785,7 +837,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.75<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 6750054</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L20">lib/colors.ts:20</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L20">lib/colors.ts:20</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -795,7 +847,7 @@
 						<div class="tsd-signature tsd-kind-icon">1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4008640460</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L21">lib/colors.ts:21</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L21">lib/colors.ts:21</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -806,7 +858,7 @@
 					<div class="tsd-signature tsd-kind-icon">colors<wbr>Grey<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L24">lib/colors.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L24">lib/colors.ts:24</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -815,7 +867,7 @@
 						<div class="tsd-signature tsd-kind-icon">0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 858993408</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L25">lib/colors.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L25">lib/colors.ts:25</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -825,7 +877,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1717986850</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L26">lib/colors.ts:26</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L26">lib/colors.ts:26</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -835,7 +887,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.75<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 2576980326</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L27">lib/colors.ts:27</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L27">lib/colors.ts:27</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -845,7 +897,7 @@
 						<div class="tsd-signature tsd-kind-icon">1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 3722304972</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L28">lib/colors.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L28">lib/colors.ts:28</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -856,7 +908,7 @@
 					<div class="tsd-signature tsd-kind-icon">colors<wbr>Hot<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L3">lib/colors.ts:3</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L3">lib/colors.ts:3</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -865,7 +917,7 @@
 						<div class="tsd-signature tsd-kind-icon">0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 52224</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L4">lib/colors.ts:4</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L4">lib/colors.ts:4</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -875,7 +927,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.4<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 1711315234</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L5">lib/colors.ts:5</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L5">lib/colors.ts:5</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -885,7 +937,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.75<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4278190182</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L6">lib/colors.ts:6</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L6">lib/colors.ts:6</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -895,7 +947,7 @@
 						<div class="tsd-signature tsd-kind-icon">1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4287103180</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L7">lib/colors.ts:7</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L7">lib/colors.ts:7</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -906,7 +958,7 @@
 					<div class="tsd-signature tsd-kind-icon">colors<wbr>Warm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L10">lib/colors.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L10">lib/colors.ts:10</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -915,7 +967,7 @@
 						<div class="tsd-signature tsd-kind-icon">0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 52224</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L11">lib/colors.ts:11</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L11">lib/colors.ts:11</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -925,7 +977,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.2<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 52258</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L12">lib/colors.ts:12</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L12">lib/colors.ts:12</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -935,7 +987,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.65<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 2290614374</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L13">lib/colors.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L13">lib/colors.ts:13</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -945,7 +997,7 @@
 						<div class="tsd-signature tsd-kind-icon">1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4278190284</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L14">lib/colors.ts:14</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L14">lib/colors.ts:14</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -956,7 +1008,7 @@
 					<div class="tsd-signature tsd-kind-icon">colors<wbr>White<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L31">lib/colors.ts:31</a></li>
+							<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L31">lib/colors.ts:31</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -965,7 +1017,7 @@
 						<div class="tsd-signature tsd-kind-icon">0<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4294967040</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L32">lib/colors.ts:32</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L32">lib/colors.ts:32</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -975,7 +1027,7 @@
 						<div class="tsd-signature tsd-kind-icon">0.6<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4294967142</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L33">lib/colors.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L33">lib/colors.ts:33</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -985,7 +1037,7 @@
 						<div class="tsd-signature tsd-kind-icon">1<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 4294967244</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/c33822e/src/lib/colors.ts#L34">lib/colors.ts:34</a></li>
+								<li>Defined in <a href="https://github.com/patrimart/blazemap-core/blob/7c770c8/src/lib/colors.ts#L34">lib/colors.ts:34</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -1004,6 +1056,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/blazemapoptions.html" class="tsd-kind-icon">Blazemap<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#blazemap" class="tsd-kind-icon">Blaze<wbr>Map</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#colorgradient" class="tsd-kind-icon">Color<wbr>Gradient</a>
@@ -1082,6 +1137,9 @@
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#pointeq" class="tsd-kind-icon">point<wbr>Eq</a>
+					</li>
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="globals.html#throttle" class="tsd-kind-icon">throttle</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#tohex" class="tsd-kind-icon">to<wbr>Hex</a>
