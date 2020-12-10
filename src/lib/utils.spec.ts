@@ -29,12 +29,15 @@ test('utilities', async (t) => {
   ]);
 
   t.true(
-    u.genColorScale({
-      0: 0x0000ff00,
-      0.2: 0x0000ff22,
-      0.65: 0x00ff0066,
-      1: 0xff0000ee,
-    }).length === 256
+    u.genColorScale(
+      {
+        0: 0x0000ff00,
+        0.2: 0x0000ff22,
+        0.65: 0x00ff0066,
+        1: 0xff0000ee,
+      },
+      5
+    ).length === 256
   );
 
   t.deepEqual(
