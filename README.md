@@ -97,7 +97,7 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: numbe
 
 - `canvas: HTMLCanvasElement` - The canvas on which to render the heatmap.
 
-- `options: BlazemapOptions` - (Default: `{ radius: 20, blur: 16, colors: colorsWarm }`) - Initial options to set.
+- `options: BlazemapOptions` - (Default: `{ radius: 20, blur: 16, colors: colorsWarm, colorSteps: 0 }`) - Initial options to set.
 
 - `maxPoints: number` - (Default: `1000`) Sets the maximum points to display.
 
@@ -115,9 +115,9 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: numbe
 
 - `resize()`: Resizes the heatmap using the canvas size.
 
-- `resizeTo(w: number, h: number)`: Resizes the heatmap and sets the canvas size.
+- `resizeTo(w: HexU16, h: HexU16)`: Resizes the heatmap and sets the canvas size.
 
-- `setHeatmap(radius: number, blur: number, colors?: ColorGradient)`: Sets the visual parameters fot the heatmap.
+- `setHeatmap(radius: HexU8, blur: HexU8, colors?: ColorGradient, colorSteps?: HexU8)`: Sets the visual parameters fot the heatmap.
 
 - `setPoints(points: Points)`: Replaces the points in the heatmap.
 
@@ -128,6 +128,12 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: numbe
 ```ts
 // Float from 0 to 1
 export type Proportion = number;
+
+// Unsigned 8-bit Integer
+export type HexU8 = number;
+
+// Unsigned 16-bit Integer
+export type HexU16 = number;
 
 // Unsigned 32-bit Integer
 export type HexU32 = number;
@@ -143,11 +149,12 @@ export type Points = ReadonlyArray<Point>;
 
 // Possible options to set for Blazemap.
 export interface BlazemapOptions {
-  readonly width: number;
-  readonly height: number;
-  readonly radius: number;
-  readonly blur: number;
+  readonly width: HexU16;
+  readonly height: HexU16;
+  readonly radius: HexU8;
+  readonly blur: HexU8;
   readonly colors: ColorGradient;
+  readonly colorSteps: HexU8;
 }
 ```
 
@@ -171,7 +178,7 @@ Available color gradients:
 
 ## Performance
 
-Renders a 1000x1000 canvas with 1000 points in less than 0.2ms.
+Renders a 1000x1000 canvas with 1000 points in less than 1 ms.
 
 ---
 

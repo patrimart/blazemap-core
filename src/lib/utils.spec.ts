@@ -3,7 +3,7 @@ import test from 'ava';
 import { colorsWarm } from './colors';
 import * as u from './utils';
 
-test('utilities', (t) => {
+test('utilities', async (t) => {
   t.is(u.clampU8(300), 255);
   t.is(u.clampU16(300), 300);
   t.is(u.clampU24(300), 300);
@@ -47,6 +47,7 @@ test('utilities', (t) => {
       radius: 20,
       blur: 16,
       colors: colorsWarm,
+      colorSteps: 0,
     }
   );
 
@@ -56,6 +57,7 @@ test('utilities', (t) => {
     radius: 20,
     blur: 16,
     colors: colorsWarm,
+    colorSteps: 0,
   };
 
   t.deepEqual(u.validateOptions(OPTIONS, OPTIONS), OPTIONS);
@@ -69,4 +71,12 @@ test('utilities', (t) => {
   t.throws(() => u.validateOptions(OPTIONS, { blur: -1 }));
 
   t.throws(() => u.validateOptions(OPTIONS, { colors: { 3: 0 } }));
+
+  await t.notThrowsAsync(async () => {
+    const fn = u.throttle((a: number, b: number) => a + b);
+    fn(1, 2);
+    fn(1, 3);
+    const result = await fn(1, 4);
+    t.is(result, 3);
+  });
 });

@@ -17,9 +17,10 @@ export type ColorGradient = Readonly<Record<Proportion, HexU32>>;
 export type RGBa = readonly [r: HexU8, g: HexU8, b: HexU8, a: HexU8];
 
 export interface BlazemapOptions {
-  readonly width: number;
-  readonly height: number;
-  readonly radius: number;
-  readonly blur: number;
+  readonly width: HexU16;
+  readonly height: HexU16;
+  readonly radius: HexU8;
+  readonly blur: HexU8;
   readonly colors: ColorGradient;
+  readonly colorSteps: HexU8;
 }

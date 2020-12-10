@@ -1,5 +1,12 @@
 import { colorsWarm } from './colors';
-import { BlazemapOptions, ColorGradient, HexU32, Point, RGBa } from './types';
+import {
+  BlazemapOptions,
+  ColorGradient,
+  HexU32,
+  HexU8,
+  Point,
+  RGBa,
+} from './types';
 
 export const clamp = (min: number, max: number) => (value: number) =>
   Math.max(Math.min(value, max), min);
@@ -56,7 +63,10 @@ export const tweenRgbas = (
   return tweens;
 };
 
-export const genColorScale = (gradient: ColorGradient): RGBa[] => {
+export const genColorScale = (
+  gradient: ColorGradient,
+  colorSteps: HexU8 = 0
+): RGBa[] => {
   const [min, max] = Object.keys(gradient)
     .map((k) => {
       const kn = Number(k);
@@ -86,6 +96,16 @@ export const genColorScale = (gradient: ColorGradient): RGBa[] => {
     tweenRgbas(f, t, steps).forEach((r, i) => (scale[i + index] = r));
   }
 
+  if (colorSteps !== 0) {
+    for (let i = 254; i > 0; i--) {
+      if (i % Math.round(255 / colorSteps) === 0) {
+        i--;
+      } else {
+        scale[i] = scale[i + 1];
+      }
+    }
+  }
+
   return scale;
 };
 
@@ -99,12 +119,13 @@ export const DEFAULT_OPTIONS = (
   radius: 20,
   blur: 16,
   colors: colorsWarm,
+  colorSteps: 0,
 });
 
 export function assertValidNumber(
   v: unknown,
   min = 1,
-  max = 10_000
+  max = 65_535
 ): asserts v is number {
   if (!(typeof v === 'number' && v >= min && v <= max)) {
     throw new Error(`The value is not a number within ${min} and ${max}: ${v}`);
@@ -112,10 +133,10 @@ export function assertValidNumber(
 }
 
 export const validateOptions = (
-  { width, height, radius, blur, colors }: BlazemapOptions,
+  { width, height, radius, blur, colors, colorSteps }: BlazemapOptions,
   options: Readonly<Partial<BlazemapOptions>> = {}
 ): BlazemapOptions => {
-  const opts = { width, height, radius, blur, colors };
+  const opts = { width, height, radius, blur, colors, colorSteps };
 
   if (options.width) {
     assertValidNumber(options.width);
@@ -128,12 +149,12 @@ export const validateOptions = (
   }
 
   if (options.radius) {
-    assertValidNumber(options.radius, 1, 1000);
+    assertValidNumber(options.radius, 1, 255);
     opts.radius = options.radius;
   }
 
   if (options.blur) {
-    assertValidNumber(options.blur, 0, 1000);
+    assertValidNumber(options.blur, 0, 255);
     opts.blur = options.blur;
   }
 
@@ -145,5 +166,28 @@ export const validateOptions = (
     opts.colors = options.colors;
   }
 
+  if (options.colorSteps) {
+    assertValidNumber(options.colorSteps, 0, 255);
+    opts.colorSteps = options.colorSteps;
+  }
+
   return opts;
+};
+
+/**
+ * Delays invocation until the next animation frame, discarding subsequent invocations in between.
+ */
+export const throttle = <Fn extends (...args: any[]) => any>(fn: Fn) => {
+  let resp: Promise<ReturnType<Fn>> | null = null;
+  return (...args: Parameters<Fn>) => {
+    if (resp === null) {
+      resp = new Promise((resolve) =>
+        (globalThis?.requestAnimationFrame ?? setTimeout)(() => {
+          resp = null;
+          resolve(fn(...args));
+        })
+      );
+    }
+    return resp;
+  };
 };

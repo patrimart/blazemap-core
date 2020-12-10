@@ -1,7 +1,7 @@
 import { GPU, IKernelRunShortcut } from 'gpu.js';
 
 import { kernelInit } from './kernel';
-import { BlazemapOptions, ColorGradient, Point, Points } from './types';
+import { BlazemapOptions, ColorGradient, HexU8, Point, Points } from './types';
 import {
   assertValidNumber,
   DEFAULT_OPTIONS,
@@ -19,13 +19,13 @@ import {
 export const blazemap = (
   canvas: HTMLCanvasElement,
   options: Readonly<
-    Partial<Pick<BlazemapOptions, 'radius' | 'blur' | 'colors'>>
+    Partial<Pick<BlazemapOptions, 'radius' | 'blur' | 'colors' | 'colorSteps'>>
   > = {},
   maxPoints = 1000
 ) => {
   assertValidNumber(maxPoints, 1, 100_000);
   let opts = validateOptions(DEFAULT_OPTIONS(canvas), options);
-  let colorScale = genColorScale(opts.colors);
+  let colorScale = genColorScale(opts.colors, opts.colorSteps);
   let pts: Point[] = [];
   let maxWeight = 1000;
   let currentKernel: IKernelRunShortcut | undefined;
@@ -76,9 +76,14 @@ export const blazemap = (
    * PUBLIC FUNCTIONS
    */
 
-  const setHeatmap = (radius: number, blur: number, colors?: ColorGradient) => {
-    opts = validateOptions(opts, { radius, blur, colors });
-    colorScale = genColorScale(opts.colors);
+  const setHeatmap = (
+    radius: number,
+    blur: number,
+    colors?: ColorGradient,
+    colorSteps?: HexU8
+  ) => {
+    opts = validateOptions(opts, { radius, blur, colors, colorSteps });
+    colorScale = genColorScale(opts.colors, opts.colorSteps);
     findMaxCluster();
   };
 
