@@ -66,9 +66,7 @@ export const blazemap = (
       return;
     }
     const diam = (opts.radius - opts.blur * 0.5) * 1.5;
-    const grid = new Array(
-      Math.ceil((opts.width / diam) * (opts.height / diam))
-    );
+    const grid = [0];
     for (let i = 0; i < pts.length; i++) {
       const [x, y, p] = pts[i];
       const index = Math.round((x / diam) * (y / diam));
