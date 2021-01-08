@@ -59,10 +59,10 @@ export const blazemap = (
   createKernel();
 
   const findMaxCluster = () => {
-    console.time('findMaxCluster');
+    // console.time('findMaxCluster');
     if (pts.length === 0) {
       maxWeight = 1;
-      console.timeEnd('findMaxCluster');
+      // console.timeEnd('findMaxCluster');
       return;
     }
     const diam = (opts.radius - opts.blur * 0.5) * 1.5;
@@ -76,8 +76,8 @@ export const blazemap = (
       grid[index] = (grid[index] ?? 0) + p;
     }
     maxWeight = grid.reduce((max, v) => Math.max(max, v));
-    console.timeEnd('findMaxCluster');
-    console.log({ maxWeight, grid });
+    // console.timeEnd('findMaxCluster');
+    // console.log({ maxWeight, grid });
   };
 
   /****************************************************************************
