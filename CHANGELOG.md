@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/patrimart/blazemap-core/compare/v1.1.1...v1.1.2) (2021-01-14)
+
+
+### Bug Fixes
+
+* **findMaxWidth:** Improve algorithm ([df161e5](https://github.com/patrimart/blazemap-core/commit/df161e54586babb9e8fe18ff3a510a7e1086662d))
+
 ### [1.1.1](https://github.com/patrimart/blazemap-core/compare/v1.1.0...v1.1.1) (2021-01-08)
 
 ## [1.1.0](https://github.com/patrimart/blazemap/compare/v1.0.2...v1.1.0) (2020-12-10)
