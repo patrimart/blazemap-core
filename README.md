@@ -99,7 +99,7 @@ blazemap(canvas: HTMLCanvasElement, options?: BlazemapOptions, maxPoints?: numbe
 
 - `canvas: HTMLCanvasElement` - The canvas on which to render the heatmap.
 
-- `options: BlazemapOptions` - (Default: `{ radius: 20, blur: 16, colors: colorsWarm, colorSteps: 0 }`) - Initial options to set.
+- `options: Partial<BlazemapOptions>` - (Default: `{ radius: 20, blur: 16, colors: colorsWarm, colorSteps: 0 }`) - Initial options to set.
 
 - `maxPoints: number` - (Default: `1000`) Sets the maximum points to display.
 
