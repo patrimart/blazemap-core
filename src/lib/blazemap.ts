@@ -58,8 +58,8 @@ export const blazemap = (
 
   createKernel();
 
-  const findMaxCluster = () => {
-    const diam = (opts.radius - opts.blur * 0.5) * 1.5;
+  const findMaxWeight = () => {
+    const diam = opts.radius - opts.blur * 0.5;
     const grid = [1];
 
     for (let i = 0; i < pts.length; i++) {
@@ -83,7 +83,7 @@ export const blazemap = (
   ) => {
     opts = validateOptions(opts, { radius, blur, colors, colorSteps });
     colorScale = genColorScale(opts.colors, opts.colorSteps);
-    findMaxCluster();
+    findMaxWeight();
   };
 
   const resize = () => {
@@ -91,7 +91,7 @@ export const blazemap = (
       width: canvas.width,
       height: canvas.height,
     });
-    findMaxCluster();
+    findMaxWeight();
     createKernel();
   };
 
@@ -99,13 +99,13 @@ export const blazemap = (
     opts = validateOptions(opts, { width, height });
     canvas.width = opts.width;
     canvas.height = opts.height;
-    findMaxCluster();
+    findMaxWeight();
     createKernel();
   };
 
   const setPoints = (points: Points) => {
-    pts = points.slice(0);
-    findMaxCluster();
+    pts = points.filter((p) => p[0] > 0 && p[1] > 0);
+    findMaxWeight();
   };
 
   const addPoint = (...point: Points) => {
